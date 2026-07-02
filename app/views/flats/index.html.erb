@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <h1 class="main-title">Explore Flats in Paris</h1> <!-- Changed text and added class -->
+
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="<%= flat["imageUrl"] %>" class="card-img-top" alt="<%= flat["name"] %>">
+
+          <div class="card-body">
+            <h5 class="card-title"><%= flat["name"] %></h5>
+            <p class="card-text">
+              <strong><%= flat["price"] %> <%= flat["priceCurrency"] %></strong> night
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

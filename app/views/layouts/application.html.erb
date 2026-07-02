@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Rails Simple Airbnb" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Rails Simple Airbnb">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# 1. ADD GOOGLE FONTS HERE %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- 2. NAVBAR (Header, Tabs, Login/Signup) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-4 py-3">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand text-danger fw-bold app-brand" href="/">
+          <i class="fa-brands fa-airbnb"></i> Airbnb Clone
+        </a>
+
+        <!-- Tabs -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active fw-semibold" href="#">Stays</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" href="#">Experiences</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" href="#">Online Experiences</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Login / Sign Up -->
+        <div class="d-flex align-items-center">
+          <a href="#" class="nav-link me-4 fw-semibold text-dark">Log in</a>
+          <a href="#" class="btn btn-danger text-white fw-semibold rounded-pill px-4 py-2">Sign up</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 3. MAIN CONTENT (Where your index.html.erb renders) -->
+    <main style="min-height: 80vh;">
+      <%= yield %>
+    </main>
+
+    <!-- 4. FOOTER -->
+    <footer class="bg-light border-top py-4 mt-5">
+      <div class="container text-center text-muted">
+        <p class="mb-0">&copy; <%= Time.current.year %> No Database Airbnb, Inc. All rights reserved.</p>
+        <small>Privacy · Terms · Sitemap</small>
+      </div>
+    </footer>
+  </body>
+</html>
