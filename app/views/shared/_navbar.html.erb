@@ -1,0 +1,19 @@
+<!-- app/views/shared/_navbar.html.erb -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-4 py-2 sticky-top shadow-sm">
+  <div class="container">
+    <!-- The Custom Logo Block -->
+    <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="<%= flats_path %>">
+      <!-- High-end vector house icon matching your primary coral color -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 30px; height: 30px; color: var(--primary-coral, #FF385C);">
+        <path d="M11.47 3.07a.75.75 0 011.06 0l7.25 7.25a.75.75 0 11-1.06 1.06L12 4.56l-6.72 6.72a.75.75 0 01-1.06-1.06l7.25-7.25z" />
+        <path d="M19 10.5a.75.75 0 01.75.75v6.75a.75.75 0 01-.75.75h-3.5a.75.75 0 01-.75-.75v-4.25H10v4.25a.75.75 0 01-.75.75H5.75a.75.75 0 01-.75-.75V11.25a.75.75 0 01.75-.75h13.25z" />
+      </svg>
+      <!-- Premium font-weighted text logo -->
+      <span style="letter-spacing: -0.04em; font-weight: 700; color: var(--dark-charcoal, #222222); font-size: 1.4rem;">
+        simple<span style="color: var(--primary-coral, #FF385C);">airbnb</span>
+      </span>
+    </a>
+
+    <%= link_to "Add Flat", new_flat_path, class: "btn btn-outline-primary px-3 py-2 rounded-pill" %>
+  </div>
+</nav>

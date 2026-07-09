@@ -28,6 +28,8 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem "simple_form"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
@@ -61,5 +63,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem 'rspec-rails', group: [ :test ]
-gem 'rails-controller-testing', group: [ :test ]
+gem "rspec-rails", group: [ :test ]
+gem "rails-controller-testing", group: [ :test ]

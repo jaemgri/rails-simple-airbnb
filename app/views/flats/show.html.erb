@@ -1,0 +1,92 @@
+<!-- Main Backdrop Wrapper -->
+<div class="w-100 min-vh-100 bg-light py-4">
+  <div class="container" style="max-width: 1100px;">
+
+    <!-- Dynamic Large Main Visual Banner -->
+    <div class="card border-0 shadow-sm rounded-0 mb-4 overflow-hidden">
+      <% if @flat.picture_url.present? %>
+        <img src="<%= @flat.picture_url %>" alt="<%= @flat.name %>" class="w-100" style="object-fit: cover; max-height: 400px; width: 100%;">
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=1200&h=450&q=80" alt="Fallback overview" class="w-100" style="object-fit: cover; max-height: 400px; width: 100%;">
+      <% end %>
+    </div>
+
+    <!-- Asymmetric Profile Columns Split -->
+    <div class="row">
+
+      <!-- Left Profile Layout Component -->
+      <div class="col-12 col-md-8">
+
+        <!-- Panel 1: Name and Location Context -->
+        <div class="card border-0 shadow-sm rounded-0 p-4 mb-3 bg-white">
+          <h1 class="fw-bold text-dark mb-2" style="font-size: 2.2rem;"><%= @flat.name %></h1>
+          <p class="text-secondary mb-0 fs-5"><%= @flat.address %></p>
+        </div>
+
+        <!-- Panel 2: Detailed Text Block -->
+        <div class="card border-0 shadow-sm rounded-0 p-4 mb-3 bg-white">
+          <h4 class="fw-bold text-dark mb-3">A bit more about this flat...</h4>
+          <p class="text-secondary lh-lg mb-0"><%= @flat.description %></p>
+        </div>
+
+        <!-- Panel 3: Quantitative Metric Overview -->
+        <div class="card border-0 shadow-sm rounded-0 p-4 bg-white">
+          <h4 class="fw-bold text-dark mb-3">Details</h4>
+          <div class="d-flex align-items-center gap-4 text-secondary">
+            <span class="d-flex align-items-center gap-2 fs-5">
+              <i class="fa-solid fa-users text-dark"></i>
+              <span class="text-dark"><%= @flat.number_of_guests %> guests</span>
+            </span>
+            <span class="d-flex align-items-center gap-2 fs-5">
+              <i class="fa-solid fa-euro-sign text-dark"></i>
+              <span class="text-dark"><%= @flat.price_per_night %> per night</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- App Utility Page Layout Controls -->
+        <div class="d-flex gap-2 mt-4">
+          <%= link_to "Back to overview", flats_path, class: "btn btn-outline-secondary rounded-0 px-3" %>
+          <%= link_to "Edit details", edit_flat_path(@flat), class: "btn btn-warning text-white rounded-0 px-3" %>
+          <%= link_to "Remove listing", flat_path(@flat), data: { turbo_method: :delete, turbo_confirm: "Are you certain you want to remove this profile listing?" }, class: "btn btn-danger rounded-0 px-3" %>
+        </div>
+
+      </div>
+
+      <!-- Right Profile Sidebar Component -->
+      <div class="col-12 col-md-4">
+
+        <!-- Interactive Booking Card Simulation -->
+        <div class="card border-0 shadow-sm rounded-0 p-4 mb-3 bg-white">
+          <h5 class="fw-bold text-dark mb-3">Book this place!</h5>
+          <form>
+            <div class="mb-3">
+              <label class="form-label text-secondary small fw-bold">From:</label>
+              <input type="text" class="form-control rounded-0" placeholder="12/10/2017">
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-secondary small fw-bold">To:</label>
+              <input type="text" class="form-control rounded-0" placeholder="18/10/2017">
+            </div>
+            <button type="button" class="btn btn-success w-100 rounded-0 py-2 fw-bold" style="background-color: #28a745; border-color: #28a745;">Book</button>
+          </form>
+        </div>
+
+        <!-- Social Media Utility Panel Component -->
+        <div class="card border-0 shadow-sm rounded-0 p-4 bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-secondary fw-bold small">Share</span>
+            <div class="d-flex gap-3 text-dark fs-5">
+              <i class="fa-brands fa-square-facebook pointer"></i>
+              <i class="fa-brands fa-square-twitter pointer"></i>
+              <i class="fa-brands fa-square-pinterest pointer"></i>
+              <i class="fa-solid fa-square-envelope pointer"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

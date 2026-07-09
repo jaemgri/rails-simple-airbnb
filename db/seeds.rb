@@ -1,9 +1,24 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb
+require "open-uri"
+require "json"
+
+puts "Cleaning database..."
+Flat.destroy_all
+
+puts "Fetching flats..."
+url = "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json"
+flats_serialized = URI.parse(url).read
+flats = JSON.parse(flats_serialized)
+
+puts "Creating #{flats.length} flats with pictures..."
+flats.each do |flat_data|
+  Flat.create!(
+    name: flat_data["name"],
+    address: "123 Fake Street, London",
+    description: "A wonderful stay featuring a great location, amazing lighting, and beautiful modern amenities.",
+    price_per_night: flat_data["price"],
+    number_of_guests: rand(2..5),
+    picture_url: flat_data["imageUrl"] # <-- Grabbing the image URL here!
+  )
+end
+puts "Finished!"
